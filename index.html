@@ -155,17 +155,45 @@ nav.main .drop a{border-radius:12px;white-space:normal;font-weight:500}
 .kinds{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 32px;padding:0;list-style:none}
 .kinds li{background:var(--sage);border-radius:999px;padding:8px 16px;font-size:.92rem;font-weight:600;color:var(--cocoa)}
 
-/* why different */
-.diff{background:var(--cocoa);color:#D9C8BC;padding:120px 0 110px;border-radius:44px 44px 0 0}
-.diff .top{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:end;margin-bottom:64px}
-.diff h2{color:#fff}
-.diff .top p{margin:0;font-size:1.1rem}
-.promises{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.16)}
-.promises li{padding:36px 34px 40px 0;border-bottom:1px solid rgba(255,255,255,.16)}
-.promises li:not(:nth-child(3n+1)){padding-left:34px;border-left:1px solid rgba(255,255,255,.16)}
-.promises .roofmark{width:46px;height:34px;margin-bottom:22px}
-.promises h3{color:#fff;margin-bottom:10px}
-.promises p{margin:0;color:#C6B2A4}
+/* why different: interactive promise tour */
+.diff{background:var(--cocoa);color:#D9C8BC;padding:120px 0 110px;border-radius:44px 44px 0 0;position:relative;overflow:hidden}
+.diff::before{content:"";position:absolute;left:-10%;bottom:-30%;width:55%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(125,191,0,.12),rgba(125,191,0,0) 65%);pointer-events:none}
+.diff .grid2{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"lead show" "list show";column-gap:72px;align-items:start}
+.diff .lead-col{grid-area:lead}
+.diff .list-col{grid-area:list}
+.diff .showcase{grid-area:show;align-self:center}
+.diff h2{color:#fff;margin-bottom:18px}
+.diff .intro{margin:0 0 36px;font-size:1.08rem;max-width:32em}
+.plist{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.14)}
+.plist li{border-bottom:1px solid rgba(255,255,255,.14)}
+.plist button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:40px 1fr 24px;gap:14px;align-items:center;padding:20px 4px;font-family:var(--display);font-weight:700;font-size:1.3rem;letter-spacing:-.015em;color:#BFA999;transition:color .25s}
+.plist button:hover{color:#fff}
+.plist button:focus-visible{outline:3px solid var(--sprout);outline-offset:2px;border-radius:8px}
+.plist .roofmark{width:34px;height:26px}
+.plist .roofmark path{stroke:#6E5444;stroke-width:4;transition:stroke .25s}
+.plist .chev{width:14px;height:14px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .3s;justify-self:end;margin-top:-6px}
+.plist .desc{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.plist .desc>div{overflow:hidden}
+.plist .desc p{margin:0;padding:0 30px 22px 58px;color:#D9C8BC;max-width:34em}
+.plist li.on button{color:#fff}
+.plist li.on .roofmark path{stroke:var(--sprout)}
+.plist li.on .chev{transform:rotate(-135deg);margin-top:6px}
+.plist li.on .desc{grid-template-rows:1fr}
+.showcase{position:relative;max-width:580px;width:100%;justify-self:end}
+.showcase .roofline{position:absolute;left:-6%;top:-8px;width:112%;height:auto;overflow:visible;z-index:3;pointer-events:none}
+.showcase .roofline path{fill:none;stroke:var(--sprout);stroke-width:16;stroke-linecap:round;stroke-linejoin:round}
+.showcase .frame{position:relative;aspect-ratio:5/6;clip-path:polygon(50% 0,100% 24%,100% 100%,0 100%,0 24%);background:var(--sage);overflow:hidden}
+.showcase .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .55s ease,transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.showcase .frame img.contain{object-fit:contain;object-position:center;padding:20% 8% 22%}
+.showcase .frame img.on{opacity:1;transform:none}
+.showcase .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(47,21,10,.55),rgba(47,21,10,0) 38%);pointer-events:none}
+.showcase .tag{position:absolute;left:24px;right:24px;bottom:24px;z-index:2;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);color:var(--cocoa);border-radius:18px;padding:14px 18px}
+.showcase .tag .dot{width:38px;height:38px;border-radius:50%;background:var(--sprout);display:grid;place-items:center;flex:none}
+.showcase .tag .dot svg{width:18px;height:18px}
+.showcase .tag .dot path{fill:none;stroke:var(--cocoa);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.showcase .tag strong{font-family:var(--display);font-size:1.15rem;letter-spacing:-.01em;line-height:1.15}
+.showcase .tag small{display:block;color:var(--muted);font-size:.82rem}
+.diff .cta-row{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap}
 
 /* services */
 .services{background:var(--cocoa);padding:0 0 120px}
@@ -268,10 +296,9 @@ footer .bottom a{color:var(--sprout);font-weight:700}
   .bento{grid-template-columns:1fr 1fr}
   .bento .intro{grid-column:1/-1;grid-row:auto;padding:0 0 20px}
   .tile.tall{grid-row:span 2;min-height:440px}
-  .diff .top,.locs .head{grid-template-columns:1fr;gap:18px}
-  .promises{grid-template-columns:1fr 1fr}
-  .promises li,.promises li:not(:nth-child(3n+1)){padding:30px 26px 34px 0;border-left:0}
-  .promises li:nth-child(2n){padding-left:26px;border-left:1px solid rgba(255,255,255,.16)}
+  .locs .head{grid-template-columns:1fr;gap:18px}
+  .diff .grid2{grid-template-columns:1fr;grid-template-areas:"lead" "show" "list";row-gap:8px}
+  .showcase{justify-self:center;max-width:460px;margin:24px 0 36px}
   .street{grid-template-columns:repeat(3,1fr)}
   .cta .box{grid-template-columns:1fr;padding:56px 40px 360px}
   .cta .man{right:50%;transform:translateX(50%);width:300px}
@@ -304,8 +331,9 @@ footer .bottom a{color:var(--sprout);font-weight:700}
   .bento{grid-template-columns:1fr}
   .tile.tall{grid-row:auto;min-height:380px}
   .diff{padding:80px 0;border-radius:28px 28px 0 0}
-  .promises{grid-template-columns:1fr}
-  .promises li,.promises li:nth-child(2n),.promises li:not(:nth-child(3n+1)){padding:26px 0;border-left:0}
+  .plist button{font-size:1.12rem;grid-template-columns:34px 1fr 20px;padding:18px 2px}
+  .plist .desc p{padding:0 10px 20px 48px}
+  .showcase .tag{left:14px;right:14px;bottom:14px}
   .services{padding-bottom:80px}
   .services .head{display:block}
   .services .head p{margin-top:14px}
@@ -453,18 +481,35 @@ footer .bottom a{color:var(--sprout);font-weight:700}
 
 <section class="diff" aria-labelledby="diff-h">
   <div class="wrap">
-    <div class="top">
-      <h2 id="diff-h">What makes our cleaning different from the rest</h2>
-      <p>When it comes to cleaning, we’ve always surprised our customers with top quality, affordable solutions. Your happiness is our goal, and with our cleaning services it’s guaranteed.</p>
+    <div class="grid2">
+      <div class="lead-col">
+        <h2 id="diff-h">What makes our cleaning different from the rest</h2>
+        <p class="intro">When it comes to cleaning, we’ve always surprised our customers with top quality, affordable solutions. Your happiness is our goal, and with our cleaning services it’s guaranteed.</p>
+      </div>
+      <div class="list-col">
+        <ul class="plist">
+        <li class="on"><button type="button" id="pb-green" aria-expanded="true" aria-controls="pd-green" data-i="0"><svg class="roofmark" viewBox="0 0 34 26" aria-hidden="true"><path d="M3 23 L17 4 L31 23"/></svg><span>Only green cleaning products</span><i class="chev" aria-hidden="true"></i></button><div class="desc" id="pd-green" role="region" aria-labelledby="pb-green"><div><p>Safe for the environment and for people. We leave you a healthier, cleaner, sanitized space.</p></div></div></li>
+        <li><button type="button" id="pb-time" aria-expanded="false" aria-controls="pd-time" data-i="1"><svg class="roofmark" viewBox="0 0 34 26" aria-hidden="true"><path d="M3 23 L17 4 L31 23"/></svg><span>On time, never cancelled</span><i class="chev" aria-hidden="true"></i></button><div class="desc" id="pd-time" role="region" aria-labelledby="pb-time"><div><p>Our staff arrive on time, and once an appointment is confirmed from our side, we never cancel it.</p></div></div></li>
+        <li><button type="button" id="pb-teams" aria-expanded="false" aria-controls="pd-teams" data-i="2"><svg class="roofmark" viewBox="0 0 34 26" aria-hidden="true"><path d="M3 23 L17 4 L31 23"/></svg><span>Teams with a task each</span><i class="chev" aria-hidden="true"></i></button><div class="desc" id="pd-teams" role="region" aria-labelledby="pb-teams"><div><p>Professionals work in teams, each with a specific task, so the job is completed totally and thoroughly.</p></div></div></li>
+        <li><button type="button" id="pb-requests" aria-expanded="false" aria-controls="pd-requests" data-i="3"><svg class="roofmark" viewBox="0 0 34 26" aria-hidden="true"><path d="M3 23 L17 4 L31 23"/></svg><span>Special requests welcome</span><i class="chev" aria-hidden="true"></i></button><div class="desc" id="pd-requests" role="region" aria-labelledby="pb-requests"><div><p>We’re always willing to accommodate special requests so your space looks remarkable week in and week out.</p></div></div></li>
+        <li><button type="button" id="pb-equipment" aria-expanded="false" aria-controls="pd-equipment" data-i="4"><svg class="roofmark" viewBox="0 0 34 26" aria-hidden="true"><path d="M3 23 L17 4 L31 23"/></svg><span>State-of-the-art equipment</span><i class="chev" aria-hidden="true"></i></button><div class="desc" id="pd-equipment" role="region" aria-labelledby="pb-equipment"><div><p>Unique cleaning methods and the best quality equipment, so every task is done systematically.</p></div></div></li>
+        <li><button type="button" id="pb-plans" aria-expanded="false" aria-controls="pd-plans" data-i="5"><svg class="roofmark" viewBox="0 0 34 26" aria-hidden="true"><path d="M3 23 L17 4 L31 23"/></svg><span>Plans made for your city</span><i class="chev" aria-hidden="true"></i></button><div class="desc" id="pd-plans" role="region" aria-labelledby="pb-plans"><div><p>Customized packages tailored to your lifestyle and location, with easy, quick booking.</p></div></div></li>
+        </ul>
+        <div class="cta-row"><a class="btn btn-green" href="https://cozyhomemaid.com/quote/">Get A Free Quote</a></div>
+      </div>
+      <div class="showcase">
+        <svg class="roofline" viewBox="0 0 600 160" aria-hidden="true"><path d="M14 150 L300 12 L586 150"/></svg>
+        <div class="frame">
+        <img src="images/gloves-spray.jpg" alt="Gloved hands cleaning bathroom tiles with a green product" loading="lazy" class="on">
+        <img src="images/cleaner-desk.jpg" alt="Smiling cleaner ready at a client’s desk" loading="lazy">
+        <img src="images/residential.jpg" alt="Cleaner wiping a kitchen island" loading="lazy">
+        <img src="images/living-room.jpg" alt="A spotless, cozy living room" loading="lazy">
+        <img src="images/cleaner-cart.webp" alt="Cleaner with a fully stocked cleaning cart" loading="lazy" class="contain">
+        <img src="images/commercial.jpg" alt="A spotless open-plan office" loading="lazy">
+          <div class="tag" aria-live="polite"><span class="dot"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span><small>Our promise</small><strong id="ptag">Only green cleaning products</strong></span></div>
+        </div>
+      </div>
     </div>
-    <ul class="promises">
-      <li><svg class="roofmark" viewBox="0 0 46 34" aria-hidden="true"><path d="M4 30 L23 5 L42 30"/></svg><h3>Only green cleaning products</h3><p>Safe for the environment and for people. We leave you a healthier, cleaner, sanitized space.</p></li>
-      <li><svg class="roofmark" viewBox="0 0 46 34" aria-hidden="true"><path d="M4 30 L23 5 L42 30"/></svg><h3>On time, never cancelled</h3><p>Our staff arrive on time, and once an appointment is confirmed from our side, we never cancel it.</p></li>
-      <li><svg class="roofmark" viewBox="0 0 46 34" aria-hidden="true"><path d="M4 30 L23 5 L42 30"/></svg><h3>Teams with a task each</h3><p>Professionals work in teams, each with a specific task, so the job is completed totally and thoroughly.</p></li>
-      <li><svg class="roofmark" viewBox="0 0 46 34" aria-hidden="true"><path d="M4 30 L23 5 L42 30"/></svg><h3>Special requests welcome</h3><p>We’re always willing to accommodate special requests so your space looks remarkable week in and week out.</p></li>
-      <li><svg class="roofmark" viewBox="0 0 46 34" aria-hidden="true"><path d="M4 30 L23 5 L42 30"/></svg><h3>State-of-the-art equipment</h3><p>Unique cleaning methods and the best quality equipment, so every task is done systematically.</p></li>
-      <li><svg class="roofmark" viewBox="0 0 46 34" aria-hidden="true"><path d="M4 30 L23 5 L42 30"/></svg><h3>Plans made for your city</h3><p>Customized packages tailored to your lifestyle and location, with easy, quick booking.</p></li>
-    </ul>
   </div>
 </section>
 
@@ -600,6 +645,12 @@ footer .bottom a{color:var(--sprout);font-weight:700}
     btns.forEach(function(x){x.setAttribute('aria-pressed','false')});
     b.setAttribute('aria-pressed','true');
     dial.href='tel:'+b.dataset.tel;city.textContent=b.textContent;num.textContent=b.dataset.show;
+  })});
+  var pl=document.querySelectorAll('.plist li'),pimgs=document.querySelectorAll('.showcase .frame img'),ptag=document.getElementById('ptag');
+  pl.forEach(function(li,i){li.querySelector('button').addEventListener('click',function(){
+    pl.forEach(function(x,j){x.classList.toggle('on',j===i);x.querySelector('button').setAttribute('aria-expanded',j===i)});
+    pimgs.forEach(function(im,j){im.classList.toggle('on',j===i)});
+    ptag.textContent=li.querySelector('button span').textContent;
   })});
   var mb=document.querySelector('.menu-btn'),nav=document.getElementById('mainnav');
   mb.addEventListener('click',function(){
