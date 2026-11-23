@@ -73,40 +73,68 @@ nav.main .drop a{border-radius:12px;white-space:normal;font-weight:500}
 .menu-btn{display:none;background:var(--cocoa);border:0;border-radius:50%;width:46px;height:46px;cursor:pointer}
 .menu-btn span{display:block;width:18px;height:2px;background:#fff;margin:4px auto;border-radius:2px}
 
-/* hero: the whole hero is a house */
-.hero{padding:10px 0 0}
-.hero .wrap{max-width:1400px;padding:0 16px}
-.house{position:relative}
-.house .shell{position:relative;clip-path:polygon(0 15%,50% 0,100% 15%,100% 100%,0 100%);border-radius:0 0 36px 36px;overflow:hidden;min-height:max(720px,88vh);display:flex;align-items:flex-end;background:var(--bark)}
-.house .shell>img{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
-.house .shell::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(47,21,10,.9) 0%,rgba(47,21,10,.72) 38%,rgba(47,21,10,.15) 70%,rgba(47,21,10,.05) 100%),linear-gradient(0deg,rgba(47,21,10,.6) 0%,rgba(47,21,10,0) 40%)}
-.house .roof{position:absolute;left:0;top:0;width:100%;height:15%;overflow:visible;pointer-events:none;z-index:3}
-.house .roof path{fill:none;stroke:var(--sprout);stroke-width:12;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;}
-.house .roof{animation:roof 1.2s .15s cubic-bezier(.65,0,.3,1) both}
-@keyframes roof{from{clip-path:inset(-20px 50% -20px 50%)}to{clip-path:inset(-20px -20px -20px -20px)}}
-.hero-in{position:relative;z-index:2;width:100%;padding:0 56px 48px;display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:end}
-.hero h1{color:#fff;font-size:clamp(2.8rem,6.2vw,5.6rem);line-height:.96;letter-spacing:-.035em;margin-bottom:24px;max-width:11ch}
-.hero .lede{color:#EADDD3;font-size:1.2rem;max-width:30em;margin-bottom:32px}
-.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
-.hero-copy{animation:rise .9s .5s both cubic-bezier(.2,.7,.2,1)}
-@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-.creds{display:flex;flex-wrap:wrap;gap:8px;margin-top:36px;padding:0;list-style:none}
-.creds li{display:flex;align-items:center;gap:8px;color:#fff;font-weight:600;font-size:.9rem;padding:8px 14px 8px 10px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(6px)}
-.creds svg{width:18px;height:18px;flex:none}
-.caller{background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-radius:28px;padding:26px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
-.caller h2{font-size:1.5rem;letter-spacing:-.02em}
-.caller p{color:var(--muted);margin:4px 0 18px;font-size:.95rem}
-.cities{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
-.cities button{font:inherit;font-weight:600;font-size:.9rem;background:#fff;color:var(--cocoa);border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;transition:border-color .2s,background .2s}
-.cities button:hover{border-color:var(--cocoa)}
-.cities button[aria-pressed="true"]{background:var(--cocoa);border-color:var(--cocoa);color:#fff}
-.dial{display:flex;align-items:center;gap:14px;text-decoration:none;background:var(--sprout);color:var(--cocoa);border-radius:20px;padding:14px 18px;transition:background .2s}
+/* hero: peek inside a cozy home */
+.hero{background:var(--sage);position:relative;overflow:hidden;border-radius:0 0 44px 44px}
+.hero::before{content:"";position:absolute;right:-8%;top:-20%;width:62%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(125,191,0,.16) 0%,rgba(125,191,0,0) 65%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;padding-top:72px;padding-bottom:84px}
+.hero h1{font-size:clamp(2.8rem,5.6vw,5.3rem);line-height:.95;letter-spacing:-.04em;margin-bottom:26px}
+.hero h1 .roofword{display:inline-block;position:relative}
+.hero .lede{font-size:1.2rem;color:var(--muted);max-width:31em;margin-bottom:32px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:38px}
+.btn-outline{border:2px solid var(--cocoa);color:var(--cocoa);padding:14px 26px}
+.btn-outline:hover{background:var(--cocoa);color:#fff}
+.caller{background:#fff;border-radius:26px;padding:20px 20px 20px 24px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;box-shadow:0 24px 50px -32px rgba(47,21,10,.5);max-width:620px}
+.caller h2{font-size:1.1rem;letter-spacing:-.01em;margin-bottom:10px}
+.cities{display:flex;flex-wrap:wrap;gap:6px}
+.cities button{font:inherit;font-weight:600;font-size:.86rem;background:var(--sage);color:var(--cocoa);border:0;border-radius:999px;padding:7px 13px;cursor:pointer;transition:background .2s,color .2s}
+.cities button:hover{background:#DDE5D0}
+.cities button[aria-pressed="true"]{background:var(--cocoa);color:#fff}
+.dial{display:flex;align-items:center;gap:12px;text-decoration:none;background:var(--sprout);color:var(--cocoa);border-radius:20px;padding:12px 18px 12px 12px;transition:background .2s;white-space:nowrap}
 .dial:hover{background:var(--sprout-l)}
-.dial .ic{width:44px;height:44px;border-radius:50%;background:var(--cocoa);display:grid;place-items:center;flex:none}
-.dial .ic svg{width:18px;height:18px;fill:#fff}
-.dial small{display:block;font-weight:600;font-size:.8rem}
-.dial strong{font-family:var(--display);font-size:1.5rem;letter-spacing:-.02em;line-height:1.1}
-.quote-link{display:block;text-align:center;margin-top:12px;font-weight:700;color:var(--cinnamon);text-underline-offset:4px}
+.dial .ic{width:42px;height:42px;border-radius:50%;background:var(--cocoa);display:grid;place-items:center;flex:none}
+.dial .ic svg{width:17px;height:17px;fill:#fff}
+.dial small{display:block;font-weight:600;font-size:.78rem}
+.dial strong{font-family:var(--display);font-size:1.3rem;letter-spacing:-.02em;line-height:1.1}
+
+/* the facade */
+.facade{position:relative;max-width:540px;width:100%;margin-left:auto;padding-top:20px}
+.facade .roofline{position:absolute;left:-7%;top:0;width:114%;height:auto;overflow:visible;z-index:3}
+.facade .roofline path{fill:none;stroke:var(--sprout);stroke-width:18;stroke-linecap:round;stroke-linejoin:round}
+.facade .chimney{position:absolute;right:16%;top:6%;width:44px;height:80px;background:var(--bark);border-radius:6px 6px 0 0;z-index:0}
+.facade .body{position:relative;z-index:1;background:var(--cocoa);clip-path:polygon(50% 0,100% 27%,100% 100%,0 100%,0 27%);padding:35% 30px 0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:200px 230px;gap:18px}
+.attic{position:absolute;left:50%;top:9%;transform:translateX(-50%);width:23%;aspect-ratio:1;border-radius:50%;overflow:hidden;border:6px solid #F3EADF;background:var(--bark)}
+.attic img{width:100%;height:100%;object-fit:cover;object-position:50% 12%}
+.win{position:relative;overflow:hidden;border-radius:14px;border:7px solid #F3EADF;background:#1d0d06}
+.win img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.win:hover img{transform:scale(1.06)}
+.win::before,.win::after{content:"";position:absolute;background:rgba(243,234,223,.92);z-index:2}
+.win::before{left:50%;top:0;bottom:0;width:5px;transform:translateX(-50%)}
+.win::after{top:50%;left:0;right:0;height:5px;transform:translateY(-50%)}
+.win .sill{position:absolute;left:-7px;right:-7px;bottom:-7px;height:12px;background:#D9CBBB;z-index:3}
+.door{position:relative;align-self:end;justify-self:center;width:72%;height:100%;background:var(--cinnamon);border-radius:999px 999px 0 0;text-decoration:none;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;border:7px solid #F3EADF;border-bottom:0;transition:background .25s}
+.door:hover{background:var(--cinnamon-d)}
+.door::before{content:"";position:absolute;inset:16% 16% 0;border:2px solid rgba(255,255,255,.22);border-bottom:0;border-radius:999px 999px 0 0}
+.door .knob{position:absolute;right:13%;top:72%;width:11px;height:11px;border-radius:50%;background:var(--sprout)}
+.door span{position:relative;font-family:var(--display);font-weight:700;font-size:1.15rem;line-height:1.1;letter-spacing:-.01em;max-width:7em}
+.door small{position:relative;font-size:.8rem;color:#F7E3D8}
+.step-stone{position:relative;z-index:2;height:16px;background:#D9CBBB;border-radius:0 0 6px 6px;margin:0 -10px}
+.bush{position:absolute;bottom:4px;z-index:3;width:110px;height:56px;border-radius:60px 60px 10px 10px;background:var(--sprout)}
+.bush.l{left:-34px}
+.bush.r{right:-30px;width:90px;height:46px;background:#6AA600}
+/* lights-on sequence */
+.win img,.attic img{animation:lights .7s both cubic-bezier(.3,.6,.3,1)}
+.attic img{animation-delay:.25s}
+.win:nth-of-type(1) img{animation-delay:.5s}
+.win:nth-of-type(2) img{animation-delay:.75s}
+.win:nth-of-type(3) img{animation-delay:1s}
+@keyframes lights{from{filter:brightness(.15) saturate(.4)}to{filter:none}}
+
+/* credentials band */
+.credband{padding:0}
+.credband ul{list-style:none;margin:0;padding:28px 0 0;border-top:1px solid #D5DDC7;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.credband li{display:flex;align-items:center;gap:12px;font-weight:700;font-family:var(--display);color:var(--cocoa);font-size:1.02rem;letter-spacing:-.01em;line-height:1.15}
+.credband svg{width:34px;height:28px;flex:none}
+.credband svg path{fill:none;stroke:var(--sprout);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
 
 /* about bento */
 .about{padding:120px 0 110px}
@@ -234,10 +262,9 @@ footer .bottom a{color:var(--sprout);font-weight:700}
   .menu-btn{display:block}
 }
 @media (max-width:1024px){
-  .hero-in{grid-template-columns:1fr;padding:0 32px 32px}
-  .house .shell{clip-path:polygon(0 9%,50% 0,100% 9%,100% 100%,0 100%);min-height:0;padding-top:200px}
-  .house .roof{height:9%}
-  .house .shell::before{background:linear-gradient(0deg,rgba(47,21,10,.95) 0%,rgba(47,21,10,.75) 55%,rgba(47,21,10,.2) 100%)}
+  .hero .wrap{grid-template-columns:1fr;gap:56px;padding-top:56px}
+  .facade{margin:0 auto}
+  .credband ul{grid-template-columns:repeat(3,1fr);row-gap:18px}
   .bento{grid-template-columns:1fr 1fr}
   .bento .intro{grid-column:1/-1;grid-row:auto;padding:0 0 20px}
   .tile.tall{grid-row:span 2;min-height:440px}
@@ -261,12 +288,18 @@ footer .bottom a{color:var(--sprout);font-weight:700}
   header.site .wrap{min-height:72px}
   .logo img{height:46px}
   nav.main{inset:132px 12px auto}
-  .hero .wrap{padding:0 8px}
-  .hero-in{padding:0 20px 22px;gap:28px}
-  .house .shell{padding-top:150px;border-radius:0 0 26px 26px;clip-path:polygon(0 6%,50% 0,100% 6%,100% 100%,0 100%)}
-  .house .roof{height:6%}
+  .hero{border-radius:0 0 30px 30px}
+  .hero .wrap{padding-top:40px;padding-bottom:60px;gap:48px}
   .hero .ctas .btn{flex:1 1 100%}
-  .caller{padding:20px}
+  .caller{grid-template-columns:1fr;padding:20px}
+  .dial{justify-content:flex-start}
+  .facade{width:88%}
+  .facade .body{padding:36% 18px 0;gap:12px;grid-template-rows:140px 170px}
+  .win,.door{border-width:5px}
+  .door span{font-size:1rem}
+  .bush{width:80px;height:42px}
+  .bush.r{width:64px;height:34px}
+  .credband ul{grid-template-columns:1fr 1fr}
   .about,.steps{padding:80px 0}
   .bento{grid-template-columns:1fr}
   .tile.tall{grid-row:auto;min-height:380px}
@@ -344,43 +377,54 @@ footer .bottom a{color:var(--sprout);font-weight:700}
 <main id="top">
 <section class="hero">
   <div class="wrap">
-    <div class="house">
-      <div class="shell">
-        <img src="images/living-room.jpg" alt="A freshly cleaned, cozy living room with a stone fireplace" width="1024" height="874" fetchpriority="high">
-        <div class="hero-in">
-          <div class="hero-copy">
-            <h1>Best home &amp; maid cleaning in Calgary and Edmonton</h1>
-            <p class="lede">Choose CozyHomeMaid for simple, trusted and the most convenient house cleaning services in Calgary and Edmonton.</p>
-            <div class="ctas">
-              <a class="btn btn-green" href="https://cozyhomemaid.com/quote/">Request a Quote</a>
-              <a class="btn btn-glass" href="#about">Who we are</a>
-            </div>
-            <ul class="creds" aria-label="Our credentials">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="#B9E05C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Fully licensed</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="#B9E05C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Covered by WCB</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="#B9E05C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Insured &amp; bonded</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="#B9E05C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Green products only</li>
-            </ul>
-          </div>
-          <div class="caller" aria-labelledby="caller-h">
-            <h2 id="caller-h">Call your city’s team</h2>
-            <p>Pick your city to see the right number.</p>
-            <div class="cities" role="group" aria-label="Choose your city">
+    <div class="hero-copy">
+      <h1>Best home &amp; maid cleaning in Calgary and Edmonton</h1>
+      <p class="lede">Choose CozyHomeMaid for simple, trusted and the most convenient house cleaning services in Calgary and Edmonton.</p>
+      <div class="ctas">
+        <a class="btn btn-brown" href="https://cozyhomemaid.com/quote/">Request a Quote</a>
+        <a class="btn btn-outline" href="#about">Who we are</a>
+      </div>
+      <div class="caller" aria-labelledby="caller-h">
+        <div>
+          <h2 id="caller-h">Call your city’s team</h2>
+          <div class="cities" role="group" aria-label="Choose your city">
               <button type="button" aria-pressed="true" data-tel="4038916243" data-show="(403) 891-6243">Calgary</button>
               <button type="button" aria-pressed="false" data-tel="7807612699" data-show="(780) 761-2699">Edmonton</button>
               <button type="button" aria-pressed="false" data-tel="6132860959" data-show="(613) 286-0959">Ottawa</button>
               <button type="button" aria-pressed="false" data-tel="3065966243" data-show="(306) 596-6243">Regina</button>
               <button type="button" aria-pressed="false" data-tel="9029996243" data-show="(902) 999-6243">Halifax</button>
             </div>
-            <a class="dial" id="dial" href="tel:4038916243">
+        </div>
+        <a class="dial" id="dial" href="tel:4038916243">
               <span class="ic"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></span>
               <span><small id="dial-city">Calgary</small><strong id="dial-num">(403) 891-6243</strong></span>
             </a>
-            <a class="quote-link" href="https://cozyhomemaid.com/quote/">Or get a free quote online</a>
-          </div>
-        </div>
       </div>
-      <svg class="roof" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 100 L50 0 L100 100"/></svg>
+    </div>
+
+    <div class="facade" aria-label="Inside a home cleaned by Cozy Home Maid">
+      <span class="chimney" aria-hidden="true"></span>
+      <svg class="roofline" viewBox="0 0 600 190" aria-hidden="true"><path d="M14 178 L300 16 L586 178"/></svg>
+      <div class="body">
+        <div class="attic"><img src="images/cleaner-desk.jpg" alt="Smiling Cozy Home Maid cleaner" width="874" height="1024"></div>
+        <div class="win"><img src="images/living-room.jpg" alt="A freshly cleaned living room" width="1024" height="874"><span class="sill"></span></div>
+        <div class="win"><img src="images/gloves-spray.jpg" alt="Gloved hands cleaning bathroom tiles" width="856" height="1050"><span class="sill"></span></div>
+        <div class="win"><img src="images/residential.jpg" alt="Cleaner wiping a kitchen island" width="1226" height="768" style="object-position:58% center"><span class="sill"></span></div>
+        <a class="door" href="https://cozyhomemaid.com/quote/"><span>Get A Free Quote</span><small>Step inside</small><i class="knob" aria-hidden="true"></i></a>
+      </div>
+      <div class="step-stone" aria-hidden="true"></div>
+      <span class="bush l" aria-hidden="true"></span><span class="bush r" aria-hidden="true"></span>
+    </div>
+  </div>
+  <div class="credband">
+    <div class="wrap" style="padding-top:0;padding-bottom:56px;display:block">
+      <ul aria-label="Our credentials">
+        <li><svg viewBox="0 0 34 28" aria-hidden="true"><path d="M3 25 L17 4 L31 25"/></svg>Fully licensed</li>
+        <li><svg viewBox="0 0 34 28" aria-hidden="true"><path d="M3 25 L17 4 L31 25"/></svg>Covered by WCB</li>
+        <li><svg viewBox="0 0 34 28" aria-hidden="true"><path d="M3 25 L17 4 L31 25"/></svg>Insured &amp; bonded</li>
+        <li><svg viewBox="0 0 34 28" aria-hidden="true"><path d="M3 25 L17 4 L31 25"/></svg>Green products only</li>
+        <li><svg viewBox="0 0 34 28" aria-hidden="true"><path d="M3 25 L17 4 L31 25"/></svg>Award winning 2018–2022</li>
+      </ul>
     </div>
   </div>
 </section>
